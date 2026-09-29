@@ -1,16 +1,14 @@
-# This is a sample Python script.
+import os
 
-# Press Maj+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+from fastapi import FastAPI
+
+app = FastAPI()
+
+# read the enviroment variable and say hi and the message
+
+MESSAGE = os.getenv("MESSAGE", "Hello World")
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+@app.get("/")
+def read_root():
+    return {"message": MESSAGE}
