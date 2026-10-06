@@ -45,7 +45,11 @@ docker compose up --build
 To customize the message:
 
 ```bash
+# Linux / macOS
 MESSAGE="Hello CPNV" docker compose up --build
+
+# Windows PowerShell
+$env:MESSAGE="Hello CPNV"; docker compose up --build
 ```
 
 Or create a `.env` file at the project root:
