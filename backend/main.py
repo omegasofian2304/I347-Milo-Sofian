@@ -6,18 +6,18 @@ app = FastAPI()
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost:5500"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# read the enviroment variable and say hi and the message
+# read the environment variable
 MESSAGE = os.getenv("MESSAGE", "Hello World")
 
 @app.get("/")
 def read_root():
-    return {"message": "Default"}
+    return {"message": "Default route"}
 
 @app.get("/message")
-def read_root():
+def read_message():
     return {"message": MESSAGE}
